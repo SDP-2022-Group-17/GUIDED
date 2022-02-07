@@ -1,5 +1,7 @@
 import tkinter as tk
 
+
+
 class Display(object):
     def __init__(self):
 
@@ -30,10 +32,12 @@ class Display(object):
         buttons.columnconfigure(0, weight=1)
         buttons.columnconfigure(4, weight=1)
 
-        b1 = tk.Button(buttons, text="Speed Up").grid(row=0, column=1)
-        b2 = tk.Button(buttons, text="Slow Down").grid(row=0, column=2)
-        b3 = tk.Button(buttons, text="Stop").grid(row=0, column=3)
-
+        b1 = tk.Button(buttons, text="Room A").grid(row=0, column=1)
+        b2 = tk.Button(buttons, text="Home").grid(row=0, column=2)
+        # b3 = tk.Button(buttons, text="Room ").grid(row=0, column=3)
+    
+        # img = tk.PhotoImage(file="images/logo.jpg")      
+        # self.root.create_image(20,20, anchor=NW, image=img)
         self.root.mainloop()
 
 Display()
