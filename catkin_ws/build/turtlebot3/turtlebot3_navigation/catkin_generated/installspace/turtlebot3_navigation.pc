@@ -1,0 +1,8 @@
+prefix=/afs/inf.ed.ac.uk/user/s19/s1911027/catkin_ws/install
+
+Name: turtlebot3_navigation
+Description: Description of turtlebot3_navigation
+Version: 1.2.5
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
