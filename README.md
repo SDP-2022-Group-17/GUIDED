@@ -9,72 +9,72 @@ ROS is already installed on DiCE but the ROS tools need to be made available to 
 
 Several Steps need to be done before running ROS
 
-Open a terminal, then type
-```gedit ~/.bashrc```
-Add the line to the file
-`source /opt/ros/noetic/setup.bash`
-Remember to save  ~/.bashrc. Then at the terminal, run:
-`source ~/.bashrc`
-To check you now have access to ROS, try running:
-`roscore`
-This can take a moment to start, the final line should read:
-`started core service [/rosout]`
+Open a terminal, then type \
+```gedit ~/.bashrc``` \
+Add the line to the file \
+`source /opt/ros/noetic/setup.bash` \
+Remember to save  ~/.bashrc. Then at the terminal, run: \
+`source ~/.bashrc` \
+To check you now have access to ROS, try running: \
+`roscore` \
+This can take a moment to start, the final line should read: \
+`started core service [/rosout]` \
 If  roscore  starts successfully, you can move on.
 
 # Remember to `source ~/.bashrc` everytime you open a new terminal !!!
 
 ## Creating workspace
 Before you start, you need to set up your workspace in terminal.
-Open a terminal:
+Open a terminal: \
 `mkdir -p ~/catkin_ws/src`  \
 `cd ~/catkin_ws` \
 `catkin_make`
 
-Again, open  ~/.bashrc  and at the end of the file, add
+Again, open  ~/.bashrc  and at the end of the file, add \
 `source ~/catkin_ws/devel/setup.bash`
 
 # Turtlebot Interaction
 
 ## Setup - Software  Dependencies
-The turtlebot ROS libraries need to be installed from source, to do this, use:
+The turtlebot ROS libraries need to be installed from source, to do this, use: \
 `cd ~/catkin_ws/src` \
 `git clone -b noetic-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git` \
 `git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git` \
 `git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git` \
 `git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git`
 
-We also need to install SLAM(Simultaneous Localization and Mapping) packages
+We also need to install SLAM(Simultaneous Localization and Mapping) packages \
 `git clone https://github.com/ros-perception/openslam_gmapping.git` \
 `git clone https://github.com/ros-perception/slam_gmapping.git` \
 `git clone https://github.com/ros/geometry2.git` \
-`git clone https://github.com/ros-planning/navigation.git` \
+`git clone https://github.com/ros-planning/navigation.git` 
 
-After that:
+After that: \
 `cd ~/catkin_ws` \
 `catkin_make`
 
 ## Setup - Communicating With a Turtlebot
-To set this  up you need to add some environment variables to your .bashrc file on DiCE.  
-`gedit ~/.bashrc`   
-and jump to the end of the file, then add:
+To set this  up you need to add some environment variables to your .bashrc file on DiCE. \
+`gedit ~/.bashrc`   \
+and jump to the end of the file, then add: \
 `export TURTLEBOT3_MODEL=waffle_pi` \
 `export ROS_MASTER_URI=http://XATU:11311` \
 `export ROS_HOSTNAME=$HOSTNAME`
 
 ## Connect To a Turtlebot
-Start up the turtlebot, wait for a minute or so, then SSH in:
-`ssh pi@<turtlebot_name>` In here, our robot name is XATU. 
+Start up the turtlebot, wait for a minute or so, then SSH in: \
+`ssh pi@<turtlebot_name>` In here, our robot name is XATU.  \
 The password is `turtlebot`
 
 ## Time Calibration For the Turtlebot
 The built in time in the turtlebot is incorrect and will bring many
-troubles
-Open: time.is
-After SSH to the turtlebot, write:
+troubles.
+- Open: time.is
+- After SSH to the turtlebot, write: \
 `sudo timedetectl set-ntp 0` \
 `timedetectl set-time 'yyyy-mm-dd hh-mm-ss'` \
-Then press 1 and enter `turtlebot`
-Now the turtlebot has synchronised the time
+Then press 1 and enter `turtlebot` \
+Now the turtlebot has synchronised the time.
 
 # SLAM
 The **SLAM (Simultaneous Localization and Mapping)** is a technique to draw a map by estimating current location in an arbitrary space.
@@ -82,15 +82,15 @@ The **SLAM (Simultaneous Localization and Mapping)** is a technique to draw a ma
 A detailed instructions could be seen from this website: https://emanual.robotis.com/docs/en/platform/turtlebot3/slam/#run-slam-node
 
 ### Run SLAM node
-1. Run roscore from Remote PC.
+1. Run roscore from Remote PC. \
 `roscore`
 
 2. If the `Bringup` is not running on the TurtleBot3 SBC, launch the Bringup. **Skip this step if you have launched bringup previously**.
 
--   Open a new terminal from Remote PC with `Ctrl` + `Alt` + `T` and connect to Turtlebot. The default password is **turtlebot**.
-`ssh pi@<turtlebot_name>` In here, the name is XATU
+-   Open a new terminal from Remote PC with `Ctrl` + `Alt` + `T` and connect to Turtlebot. The default password is **turtlebot**. \
+`ssh pi@<turtlebot_name>` In here, the name is XATU \
 On the turtlebot, run: \
-`roscore &`
+`roscore &` \
 Wait for  roscore  to start, then run: \
 `roslaunch turtlebot3_bringup turtlebot3_robot.launch`
 
