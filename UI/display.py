@@ -1,5 +1,5 @@
 import tkinter as tk
-
+import navigation as nav
 
 
 class Display(object):
@@ -32,10 +32,9 @@ class Display(object):
         buttons.columnconfigure(0, weight=1)
         buttons.columnconfigure(4, weight=1)
 
-        b1 = tk.Button(buttons, text="Room A").grid(row=0, column=1)
+        b1 = tk.Button(buttons, text="Room A", command=nav.talker).grid(row=0, column=1)
         b2 = tk.Button(buttons, text="Home").grid(row=0, column=2)
         # b3 = tk.Button(buttons, text="Room ").grid(row=0, column=3)
-    
         # img = tk.PhotoImage(file="images/logo.jpg")      
         # self.root.create_image(20,20, anchor=NW, image=img)
         self.root.mainloop()

@@ -7,7 +7,7 @@ def talker():
     rospy.init_node('talker', anonymous=True)
     rate = rospy.Rate(10) # 10hz
     # while not rospy.is_shutdown():
-    for i in range(5):
+    for i in range(25):
         velocity = Twist()
         velocity.linear.x = 0.05
         velocity.angular.z = 0.2
