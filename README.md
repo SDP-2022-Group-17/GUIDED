@@ -71,8 +71,7 @@ The built in time in the turtlebot is incorrect and will bring many
 troubles.
 - Open: time.is
 - After SSH to the turtlebot, write: \
-`sudo timedetectl set-ntp 0` \
-`timedetectl set-time 'yyyy-mm-dd hh-mm-ss'` \
+`sudo ntpdate extntp0.inf.ed.ac.uk` \
 Then press 1 and enter `turtlebot` \
 Now the turtlebot has synchronised the time.
 
