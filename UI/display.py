@@ -53,7 +53,10 @@ class Display(object):
         b1.pack(expand=True, fill="both", side="left", padx=20, pady=5)
         b2 = tk.Button(buttons, text="Home", font=("", 20), bg='black', fg='white',)
         b2.pack(expand=True, fill="both", side="right", padx=20, pady=5)
-
+        b3 = tk.Button(buttons, text="Stop", font=("", 20), bg='red', fg='white',)
+        b3.pack(expand=True, fill="both", side="right", padx=20, pady=5)
+        
         self.root.mainloop()
 
 Display()
+
