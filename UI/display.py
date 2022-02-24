@@ -1,8 +1,12 @@
 import tkinter as tk
+import itertools
+
 from ButtonFrame import ButtonFrame
 from TitleFrame import TitleFrame
+import speech
+import concurrent.futures
 
-class App(tk.Tk):
+class Display(tk.Tk):
     def __init__(self):
         super().__init__()
 
@@ -33,7 +37,8 @@ class App(tk.Tk):
         self.title_frames = {}
         self.button_frames = {}
 
-        for frame_status in ("start", "travel", "end"):
+        frame_statuses = ["start", "travel", "end"]
+        for frame_status in frame_statuses:
             title_frame = TitleFrame(self, frame_status)
             self.title_frames[frame_status] = title_frame
             title_frame.grid(column=1, row=1, sticky='nsew')
@@ -42,7 +47,19 @@ class App(tk.Tk):
             self.button_frames[frame_status] = button_frame
             button_frame.grid(column=1, row=2, sticky='nsew')
 
-        self.change_frame("start")
+        self.status_iterator = itertools.cycle(frame_statuses)
+        self.change_frame(next(self.status_iterator))
+
+        # speech_recognition = speech.Speech()
+        # with concurrent.futures.ThreadPoolExecutor() as executor:
+        #     future = executor.submit(speech_recognition.listenMicrophone)
+            # return_value = future.result()
+            # print(f'HERE {return_value}')
+            # if return_value == "room":
+            #     self.change_frame(next(self.status_iterator))
+
+        self.text = None
+        self.after(500, self.listenAudioInput)
 
     def change_frame(self, frame_status):
         title_frame = self.title_frames[frame_status]
@@ -51,7 +68,15 @@ class App(tk.Tk):
         button_frame = self.button_frames[frame_status]
         button_frame.tkraise()
 
+    def listenAudioInput(self):
+        speech_recognition = speech.Speech()
+        text = speech_recognition.listenMicrophone()
+        self.after(500, display.listenAudioInput)
+
+        if text:
+            self.change_frame(next(self.status_iterator))
+            self.text = text
 
 if __name__ == "__main__":
-    app = App()
-    app.mainloop()
+    display = Display()
+    display.mainloop()

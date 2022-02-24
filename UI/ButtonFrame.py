@@ -1,5 +1,5 @@
 import tkinter as tk
-import navigation as nav
+# import navigation as nav
 
 LARGEFONT =("", 20)
 
@@ -48,12 +48,15 @@ class ButtonFrame(tk.Frame):
 
 def pressRoomA(container):
     ROS()
-    container.change_frame('travel')
+    container.change_frame(next(container.status_iterator))
 
 def pressStart(container):
     ROS()
-    container.change_frame('end')
+    container.change_frame(next(container.status_iterator))
 
-def pressStart(container):
+def pressNewJourney(container):
     ROS()
-    container.change_frame('start')
+    container.change_frame(next(container.status_iterator))
+
+def ROS():
+    pass
