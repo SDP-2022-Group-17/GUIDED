@@ -4,7 +4,7 @@ import itertools
 from ButtonFrame import ButtonFrame
 from TitleFrame import TitleFrame
 import speech
-import concurrent.futures
+# import concurrent.futures
 
 class Display(tk.Tk):
     def __init__(self):
@@ -59,7 +59,7 @@ class Display(tk.Tk):
             #     self.change_frame(next(self.status_iterator))
 
         self.text = None
-        self.after(500, self.listenAudioInput)
+        # self.after(500, self.listenAudioInput)
 
     def change_frame(self, frame_status):
         title_frame = self.title_frames[frame_status]
