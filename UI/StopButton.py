@@ -1,23 +1,29 @@
-import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
+import RPi.GPIO as GPIO
 
-		
+GPIO.setmode(GPIO.BOARD)
+
 class StopButton():
-    def __init__(self):
-		GPIO.setwarnings(False) # Ignore warning for now
-		GPIO.setmode(GPIO.BOARD) # Use physical pin numbering
-		GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # Set pin 10 to be an input pin and set initial value to be pulled low (off)
-	
-    def listenButton(self):
-        text = None
-        with BUTTON as source:
-            try:
-				if GPIO.input(10) == GPIO.HIGH:
-					command = 1
-            except Exception as e:
-				print("Error")
+  def __init__(self):
+    super().__init__()
+  
+  def listenButton():
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setwarnings(False)
+    GPIO.add_event_detect(10,GPIO.RISING,callback=button_callback)
+    text = None
+    try:
+      if GPIO.input(inpin) == 0:
+        text = 1
+        print("please")
+    except Exception as e:
+      print(e)
 
-        return command
+    GPIO.cleanup()
+
+  def button_callback(channel):
+    print("Button was pushed!")
 
 if __name__ == "__main__":
-    buttonpress = StopButton()
-    text = buttonpress.listenButton()
+  speech_recognition = Speech()
+  text = speech_recognition.listenMicrophone()
