@@ -7,8 +7,9 @@ class ButtonFrame(ttk.Frame):
     def __init__(self, container, frame_status):
         super().__init__(container)
 
-        stop_button = StopButton()
-        stopButton = ttk.Button(
+        phys_button = StopButton.getInstance()
+
+        stop_button = tk.Button(
                 self,
                 text="STOP",
                 style='large_font.TButton',
@@ -62,6 +63,7 @@ def pressNewJourney(container):
     container.change_frame(next(container.status_iterator))
 
 def pressStop():
+    print("Stop button pressed.")
     ROS()
 
 def ROS():
