@@ -1,4 +1,8 @@
+import os
 import tkinter as tk
+from tkinter import ttk
+from ttkthemes import ThemedTk
+
 import itertools
 
 from ButtonFrame import ButtonFrame
@@ -6,14 +10,16 @@ from TitleFrame import TitleFrame
 import speech
 # import concurrent.futures
 
-class Display(tk.Tk):
+class Display(ThemedTk):
     def __init__(self):
         super().__init__()
+        self.set_theme('plastik')
 
         width = 800
         height = 480
         self.title("Welcome to guidED")
         self.geometry(str(width)+"x"+str(height))
+        self.configure(background='#efefef')
 
         # Centralise widgets by giving empty columns a weight
         # so that they consume all extra space
@@ -26,7 +32,7 @@ class Display(tk.Tk):
         self.columnconfigure(2, weight=1)
 
         # Logo
-        logo = tk.Frame(self, background="black")
+        logo = ttk.Frame(self)
         logo.grid(column=1, row = 0)
         canvas = tk.Canvas(logo, width=300, height=162)
         canvas.grid()
@@ -50,16 +56,10 @@ class Display(tk.Tk):
         self.status_iterator = itertools.cycle(frame_statuses)
         self.change_frame(next(self.status_iterator))
 
-        # speech_recognition = speech.Speech()
-        # with concurrent.futures.ThreadPoolExecutor() as executor:
-        #     future = executor.submit(speech_recognition.listenMicrophone)
-            # return_value = future.result()
-            # print(f'HERE {return_value}')
-            # if return_value == "room":
-            #     self.change_frame(next(self.status_iterator))
-
         self.text = None
-        # self.after(500, self.listenAudioInput)
+
+    def change_theme(self):
+        self.style.theme_use(self.selected_theme.get())
 
     def change_frame(self, frame_status):
         title_frame = self.title_frames[frame_status]
@@ -67,6 +67,9 @@ class Display(tk.Tk):
 
         button_frame = self.button_frames[frame_status]
         button_frame.tkraise()
+
+        # path = os.path.join(os.getcwd(), 'sounds', "{}.mp3".format(frame_status))
+        # os.system("start " + u"{}".format(path))
 
     def listenAudioInput(self):
         speech_recognition = speech.Speech()
@@ -76,6 +79,8 @@ class Display(tk.Tk):
         if text:
             self.change_frame(next(self.status_iterator))
             self.text = text
+
+
 
 if __name__ == "__main__":
     display = Display()

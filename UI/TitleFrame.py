@@ -1,12 +1,13 @@
 import tkinter as tk
+from tkinter import ttk
 
 LARGEFONT =("", 20)
 
-class TitleFrame(tk.Frame):
+class TitleFrame(ttk.Frame):
     def __init__(self, container, frame_status):
         super().__init__(container)
 
-        l1 = tk.Label(self, font=("", 20))
+        l1 = ttk.Label(self)
         l1.pack()
         if frame_status == "start":
             l1.configure(text="Where do you want to go?")
