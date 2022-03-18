@@ -7,8 +7,8 @@ import itertools
 
 from ButtonFrame import ButtonFrame
 from TitleFrame import TitleFrame
-import speech
-# import concurrent.futures
+#import speech
+import concurrent.futures
 
 class Display(ThemedTk):
     def __init__(self):
