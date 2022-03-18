@@ -14,6 +14,8 @@ class Display(ThemedTk):
     def __init__(self):
         super().__init__()
         self.set_theme('plastik')
+        self.style = ttk.Style()
+        self.style.configure('large_font.TButton', font=('Segoe UI', 20))
 
         width = 800
         height = 480
@@ -36,7 +38,7 @@ class Display(ThemedTk):
         logo.grid(column=1, row = 0)
         canvas = tk.Canvas(logo, width=300, height=162)
         canvas.grid()
-        self.photo = tk.PhotoImage(file = "images/logo_small.png")
+        self.photo = tk.PhotoImage(file = "images/logo_small_transparent.png")
         canvas.create_image(0, 0, anchor="nw", image=self.photo)
 
         # initializing frames to an empty array
