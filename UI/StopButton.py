@@ -22,5 +22,5 @@ class StopButton():
             StopButton.__instance=self
             GPIO.setmode(GPIO.BOARD)
             GPIO.setwarnings(False)
-            GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-            GPIO.add_event_detect(10,GPIO.RISING,callback=self.button_callback)
+            GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+            GPIO.add_event_detect(18,GPIO.RISING,callback=self.button_callback)
