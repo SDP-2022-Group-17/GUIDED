@@ -1,4 +1,5 @@
 import tkinter as tk
+from StopButton import StopButton
 # import navigation as nav
 
 LARGEFONT =("", 20)
@@ -6,6 +7,19 @@ LARGEFONT =("", 20)
 class ButtonFrame(tk.Frame):
     def __init__(self, container, frame_status):
         super().__init__(container)
+
+        stop_button = StopButton(self)
+        stop_button.button_event()
+        
+        stopButton = tk.Button(
+                self,
+                text="STOP",
+                font=LARGEFONT,
+                bg='black',
+                fg='white',
+                command = pressStop)
+        stop_button.pack(expand=True, side='left', fill='both', padx=5, pady=5)
+
 
         if frame_status == "start":
             b1 = tk.Button(
@@ -45,6 +59,7 @@ class ButtonFrame(tk.Frame):
             b1.pack(expand=True, fill="both", side="left", padx=20, pady=5)
         else:
             print("Invalid status.")
+            
 
 def pressRoomA(container):
     ROS()
@@ -57,6 +72,9 @@ def pressStart(container):
 def pressNewJourney(container):
     ROS()
     container.change_frame(next(container.status_iterator))
+    
+def pressStop():
+    ROS()
 
 def ROS():
     pass

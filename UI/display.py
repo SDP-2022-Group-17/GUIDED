@@ -5,7 +5,6 @@ from ButtonFrame import ButtonFrame
 from TitleFrame import TitleFrame
 #import speech
 import concurrent.futures
-import stopButton
 
 class Display(tk.Tk):
     def __init__(self):
@@ -58,14 +57,6 @@ class Display(tk.Tk):
             # print(f'HERE {return_value}')
             # if return_value == "room":
             #     self.change_frame(next(self.status_iterator))
-
-        button = StopButton.StopButton()
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            future = executor.submit(speech_recognition.listenMicrophone)
-            return_value = future.result()
-            print(f'HERE {return_value}')
-            if return_value == "0":
-                print("hello")
         
         self.text = None
         # self.after(500, self.listenAudioInput)
