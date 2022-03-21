@@ -5,16 +5,18 @@ from StopButton import StopButton
 
 class ButtonFrame(ttk.Frame):
     def __init__(self, container, frame_status):
-        super().__init__(container)
+        container.style.configure('redbg.TFrame', background = 'red')
+
+        super().__init__(container, style = 'red.TFrame')
 
         phys_button = StopButton.getInstance()
 
-        stop_button = tk.Button(
-                self,
-                text="STOP",
-                style='large_font.TButton',
-                command = pressStop)
-        stopButton.pack(expand=True, side='left', fill='both', padx=5, pady=5)
+        # stop_button = ttk.Button(
+        #         self,
+        #         text="STOP",
+        #         style='large_font.TButton',
+        #         command = pressStop)
+        # stop_button.pack(expand=True, side='left', fill='both', padx=5, pady=5)
 
 
         if frame_status == "start":

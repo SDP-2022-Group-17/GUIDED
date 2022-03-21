@@ -7,7 +7,7 @@ import itertools
 
 from ButtonFrame import ButtonFrame
 from TitleFrame import TitleFrame
-#import speech
+import speech
 import concurrent.futures
 
 class Display(ThemedTk):
@@ -36,10 +36,16 @@ class Display(ThemedTk):
         # Logo
         logo = ttk.Frame(self)
         logo.grid(column=1, row = 0)
-        canvas = tk.Canvas(logo, width=300, height=162)
+        canvas = tk.Canvas(logo, width=299, height=66)
         canvas.grid()
-        self.photo = tk.PhotoImage(file = "images/logo_small_transparent.png")
-        canvas.create_image(0, 0, anchor="nw", image=self.photo)
+        self.logo_photo = tk.PhotoImage(file = "images/logo_small_transparent.png")
+        canvas.create_image(0, 0, anchor="nw", image=self.logo_photo)
+
+        # Stop button
+        stop_button = ttk.Frame(self)
+        self.photo =  tk.PhotoImage(file = "images/stopsign.png")
+        # ttk.Button(self, image = self.photo).grid()
+
 
         # initializing frames to an empty array
         self.title_frames = {}
@@ -59,6 +65,7 @@ class Display(ThemedTk):
         self.change_frame(next(self.status_iterator))
 
         self.text = None
+        self.after(500, self.listenAudioInput)
 
     def change_theme(self):
         self.style.theme_use(self.selected_theme.get())
@@ -70,8 +77,8 @@ class Display(ThemedTk):
         button_frame = self.button_frames[frame_status]
         button_frame.tkraise()
 
-        # path = os.path.join(os.getcwd(), 'sounds', "{}.mp3".format(frame_status))
-        # os.system("start " + u"{}".format(path))
+        path = os.path.join(os.getcwd(), 'sounds', "{}.mp3".format(frame_status))
+        os.system("start " + u"{}".format(path))
 
     def listenAudioInput(self):
         speech_recognition = speech.Speech()

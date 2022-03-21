@@ -5,7 +5,9 @@ LARGEFONT =("Segoe UI", 20)
 
 class TitleFrame(ttk.Frame):
     def __init__(self, container, frame_status):
-        super().__init__(container)
+        # container.style.configure('redbg.TFrame', background = 'red')
+
+        super().__init__(container)#, style = 'redbg.TFrame')
 
         l1 = ttk.Label(self, font=LARGEFONT)
         l1.pack()
