@@ -11,12 +11,12 @@ class ButtonFrame(ttk.Frame):
 
         phys_button = StopButton.getInstance()
 
-        # stop_button = ttk.Button(
-        #         self,
-        #         text="STOP",
-        #         style='large_font.TButton',
-        #         command = pressStop)
-        # stop_button.pack(expand=True, side='left', fill='both', padx=5, pady=5)
+        stopButton = ttk.Button(
+                self,
+                text="STOP",
+                style='large_font.TButton',
+                command = pressStop)
+        stopButton.pack(expand=True, side='left', fill='both', padx=5, pady=5)
 
 
         if frame_status == "start":
