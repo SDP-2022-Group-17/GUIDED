@@ -2,6 +2,7 @@ import os
 import tkinter as tk
 from tkinter import ttk
 from ttkthemes import ThemedTk
+from StopButton import StopButton
 
 import itertools
 
@@ -16,12 +17,15 @@ class Display(ThemedTk):
         self.set_theme('plastik')
         self.style = ttk.Style()
         self.style.configure('large_font.TButton', font=('Segoe UI', 20))
+        self.style.configure('transparent.TButton', foreground='#efefef')
 
         width = 800
         height = 480
         self.title("Welcome to guidED")
         self.geometry(str(width)+"x"+str(height))
         self.configure(background='#efefef')
+        # self.attributes("-fullscreen", True)
+
 
         # Centralise widgets by giving empty columns a weight
         # so that they consume all extra space
@@ -42,10 +46,24 @@ class Display(ThemedTk):
         canvas.create_image(0, 0, anchor="nw", image=self.logo_photo)
 
         # Stop button
-        stop_button = ttk.Frame(self)
-        self.photo =  tk.PhotoImage(file = "images/stopsign.png")
-        # ttk.Button(self, image = self.photo).grid()
+        phys_button = StopButton.getInstance()
+        self.help_photo =  tk.PhotoImage(file = "images/stopsign.png")
+        stopButton = tk.Button(
+                    self,
+                    image = self.help_photo,
+                    bd = 0,
+                    command = pressStop)
+        stopButton.grid(row=2, column=0)
 
+        # Call button
+        phys_button = StopButton.getInstance()
+        self.photo =  tk.PhotoImage(file = "images/emergency call icon.png")
+        stopButton = tk.Button(
+                    self,
+                    image = self.photo,
+                    bd = 0,
+                    command = pressCall)
+        stopButton.grid(row=2, column=2)
 
         # initializing frames to an empty array
         self.title_frames = {}
@@ -65,7 +83,7 @@ class Display(ThemedTk):
         self.change_frame(next(self.status_iterator))
 
         self.text = None
-        self.after(500, self.listenAudioInput)
+        # self.after(500, self.listenAudioInput)
 
     def change_theme(self):
         self.style.theme_use(self.selected_theme.get())
@@ -89,7 +107,10 @@ class Display(ThemedTk):
             self.change_frame(next(self.status_iterator))
             self.text = text
 
-
+def pressStop():
+    print("Stop button pressed.")
+def pressCall():
+    print("Call button pressed.")
 
 if __name__ == "__main__":
     display = Display()
