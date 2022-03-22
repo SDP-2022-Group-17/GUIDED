@@ -6,14 +6,12 @@ import actionlib
 
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
-path = "/afs/inf.ed.ac.uk/user/s19/s1970051/catkin_ws/src/simple_navigation_goals/launch/movebase_seq_home.launch"
-
 class Navigation():
     def __init__(self):
         print("Initialising Nav")
         self.action_timeout = 10
         rospy.init_node('talker', anonymous=True)
-        self.path = "/afs/inf.ed.ac.uk/user/s19/s1970051/catkin_ws/src/simple_navigation_goals/launch/"
+        self.path = "/home/group17/catkin_ws/src/simple_navigation_goals/launch/"
         self.move_base = actionlib.SimpleActionClient('move_base', MoveBaseAction)
         self.move_base.wait_for_server(rospy.Duration(self.action_timeout))
 

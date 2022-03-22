@@ -1,19 +1,22 @@
 import tkinter as tk
 from tkinter import ttk
 from StopButton import StopButton
+import navigation as nav
+
 # import navigation as nav
 
 class ButtonFrame(ttk.Frame):
     def __init__(self, container, frame_status):
         super().__init__(container)
+        self.move_bot = nav.Navigation()
 
-        phys_button = StopButton.getInstance()
+        #phys_button = StopButton.getInstance()
 
         stopButton = ttk.Button(
                 self,
                 text="STOP",
                 style='large_font.TButton',
-                command = pressStop)
+                command = self.pressStop)
         stopButton.pack(expand=True, side='left', fill='both', padx=5, pady=5)
 
 
@@ -22,7 +25,7 @@ class ButtonFrame(ttk.Frame):
                 self,
                 text="Room A",
                 style='large_font.TButton',
-                command=lambda : pressRoomA(container))
+                command=lambda : self.pressRoomA(container))
             b1.pack(expand=True, side='left', fill='both', padx=5, pady=5)
 
             b2 = ttk.Button(
@@ -37,34 +40,34 @@ class ButtonFrame(ttk.Frame):
                 self,
                 text="Start",
                 style='large_font.TButton',
-                command=lambda : pressStart(container))
+                command=lambda : self.pressStart(container))
             b1.pack(expand=True, fill="both", side="left", padx=5, pady=5)
         elif frame_status == "end":
             b1 = ttk.Button(
                 self,
                 text="Start a new journey",
                 style='large_font.TButton',
-                command=lambda : pressNewJourney(container))
+                command=lambda : self.pressNewJourney(container))
             b1.pack(expand=True, fill="both", side="left", padx=20, pady=5)
         else:
             print("Invalid status.")
 
 
-def pressRoomA(container):
-    ROS()
-    container.change_frame(next(container.status_iterator))
+    def pressRoomA(self,container):
+        self.move_bot.roomA()
+        #container.change_frame(next(container.status_iterator))
 
-def pressStart(container):
-    ROS()
-    container.change_frame(next(container.status_iterator))
+    def pressStart(self,container):
+        self.ROS()
+        container.change_frame(next(container.status_iterator))
 
-def pressNewJourney(container):
-    ROS()
-    container.change_frame(next(container.status_iterator))
+    def pressNewJourney(self,container):
+        self.ROS()
+        container.change_frame(next(container.status_iterator))
 
-def pressStop():
-    print("Stop button pressed.")
-    ROS()
+    def pressStop(self):
+        self.move_bot.stop()
+        print("Stop button pressed.")
 
-def ROS():
-    pass
+    def ROS(self):
+        pass

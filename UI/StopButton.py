@@ -13,7 +13,7 @@ class StopButton():
     
     def button_callback(self,channel):
         ButtonFrame.pressStop()
-        sleep(1.5)
+        sleep(1)
         
     def __init__(self):
         if StopButton.__instance != None:
@@ -24,3 +24,4 @@ class StopButton():
             GPIO.setwarnings(False)
             GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
             GPIO.add_event_detect(18,GPIO.RISING,callback=self.button_callback)
+            
