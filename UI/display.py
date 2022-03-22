@@ -2,12 +2,13 @@ import os
 import tkinter as tk
 from tkinter import ttk
 from ttkthemes import ThemedTk
+from StopButton import StopButton
 
 import itertools
 
 from ButtonFrame import ButtonFrame
 from TitleFrame import TitleFrame
-#import speech
+import speech
 import concurrent.futures
 
 class Display(ThemedTk):
@@ -16,12 +17,15 @@ class Display(ThemedTk):
         self.set_theme('plastik')
         self.style = ttk.Style()
         self.style.configure('large_font.TButton', font=('Segoe UI', 20))
+        self.style.configure('transparent.TButton', foreground='#efefef')
 
         width = 800
         height = 480
         self.title("Welcome to guidED")
         self.geometry(str(width)+"x"+str(height))
         self.configure(background='#efefef')
+        # self.attributes("-fullscreen", True)
+
 
         # Centralise widgets by giving empty columns a weight
         # so that they consume all extra space
@@ -36,10 +40,30 @@ class Display(ThemedTk):
         # Logo
         logo = ttk.Frame(self)
         logo.grid(column=1, row = 0)
-        canvas = tk.Canvas(logo, width=300, height=162)
+        canvas = tk.Canvas(logo, width=299, height=66)
         canvas.grid()
-        self.photo = tk.PhotoImage(file = "images/logo_small_transparent.png")
-        canvas.create_image(0, 0, anchor="nw", image=self.photo)
+        self.logo_photo = tk.PhotoImage(file = "images/logo_small_transparent.png")
+        canvas.create_image(0, 0, anchor="nw", image=self.logo_photo)
+
+        # Stop button
+        phys_button = StopButton.getInstance()
+        self.help_photo =  tk.PhotoImage(file = "images/stopsign.png")
+        stopButton = tk.Button(
+                    self,
+                    image = self.help_photo,
+                    bd = 0,
+                    command = pressStop)
+        stopButton.grid(row=2, column=0)
+
+        # Call button
+        phys_button = StopButton.getInstance()
+        self.photo =  tk.PhotoImage(file = "images/emergency call icon.png")
+        stopButton = tk.Button(
+                    self,
+                    image = self.photo,
+                    bd = 0,
+                    command = pressCall)
+        stopButton.grid(row=2, column=2)
 
         # initializing frames to an empty array
         self.title_frames = {}
@@ -59,6 +83,7 @@ class Display(ThemedTk):
         self.change_frame(next(self.status_iterator))
 
         self.text = None
+        # self.after(500, self.listenAudioInput)
 
     def change_theme(self):
         self.style.theme_use(self.selected_theme.get())
@@ -70,8 +95,8 @@ class Display(ThemedTk):
         button_frame = self.button_frames[frame_status]
         button_frame.tkraise()
 
-        # path = os.path.join(os.getcwd(), 'sounds', "{}.mp3".format(frame_status))
-        # os.system("start " + u"{}".format(path))
+        path = os.path.join(os.getcwd(), 'sounds', "{}.mp3".format(frame_status))
+        os.system("start " + u"{}".format(path))
 
     def listenAudioInput(self):
         speech_recognition = speech.Speech()
@@ -82,7 +107,10 @@ class Display(ThemedTk):
             self.change_frame(next(self.status_iterator))
             self.text = text
 
-
+def pressStop():
+    print("Stop button pressed.")
+def pressCall():
+    print("Call button pressed.")
 
 if __name__ == "__main__":
     display = Display()

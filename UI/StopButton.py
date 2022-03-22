@@ -10,11 +10,10 @@ class StopButton():
         if StopButton.__instance == None:
             StopButton()
         return StopButton.__instance
-    
+
     def button_callback(self,channel):
         ButtonFrame.pressStop()
         sleep(1)
-        
     def __init__(self):
         if StopButton.__instance != None:
             raise Exception("This class is a singleton!")

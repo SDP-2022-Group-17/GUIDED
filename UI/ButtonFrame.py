@@ -1,24 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
-from StopButton import StopButton
 import navigation as nav
-
-# import navigation as nav
 
 class ButtonFrame(ttk.Frame):
     def __init__(self, container, frame_status):
-        super().__init__(container)
-        self.move_bot = nav.Navigation()
+        container.style.configure('redbg.TFrame', background = 'red')
 
-        #phys_button = StopButton.getInstance()
-
-        stopButton = ttk.Button(
-                self,
-                text="STOP",
-                style='large_font.TButton',
-                command = self.pressStop)
-        stopButton.pack(expand=True, side='left', fill='both', padx=5, pady=5)
-
+        super().__init__(container, style = 'red.TFrame')
 
         if frame_status == "start":
             b1 = ttk.Button(

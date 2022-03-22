@@ -20,7 +20,7 @@ class Speech(sr.Recognizer):
             # r.adjust_for_ambient_noise(source)
             print("Please say something:")
             try:
-                audio = self.listen(source, timeout=0.8)
+                audio = self.listen(source, timeout=0.7)
                 text = self.recognize_google(audio)
                 print("You said: \n" + text)
             except sr.WaitTimeoutError as e:
