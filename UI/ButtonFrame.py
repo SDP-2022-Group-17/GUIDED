@@ -1,12 +1,16 @@
 import tkinter as tk
 from tkinter import ttk
 import navigation as nav
+from StopButton import StopButton
 
 class ButtonFrame(ttk.Frame):
     def __init__(self, container, frame_status):
         container.style.configure('redbg.TFrame', background = 'red')
 
         super().__init__(container, style = 'red.TFrame')
+
+        phys_button = StopButton.getInstance()
+        self.move_bot = nav.Navigation()
 
         if frame_status == "start":
             b1 = ttk.Button(
@@ -19,7 +23,8 @@ class ButtonFrame(ttk.Frame):
             b2 = ttk.Button(
                 self,
                 text="Home",
-                style='large_font.TButton'
+                style='large_font.TButton',
+                command=lambda : self.pressHome(container)
                 )
             b2.pack(expand=True, side='right', fill='both', padx=5, pady=5)
 
@@ -44,6 +49,10 @@ class ButtonFrame(ttk.Frame):
     def pressRoomA(self,container):
         self.move_bot.roomA()
         #container.change_frame(next(container.status_iterator))
+    def pressHome(self,container):
+        self.move_bot.home()
+        #container.change_frame(next(container.status_iterator))
+
 
     def pressStart(self,container):
         self.ROS()

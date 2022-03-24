@@ -2,7 +2,7 @@ import os
 import tkinter as tk
 from tkinter import ttk
 from ttkthemes import ThemedTk
-from StopButton import StopButton
+#from StopButton import StopButton
 
 import itertools
 
@@ -46,7 +46,7 @@ class Display(ThemedTk):
         canvas.create_image(0, 0, anchor="nw", image=self.logo_photo)
 
         # Stop button
-        phys_button = StopButton.getInstance()
+        #phys_button = StopButton.getInstance()
         self.help_photo =  tk.PhotoImage(file = "images/stopsign.png")
         stopButton = tk.Button(
                     self,
@@ -56,7 +56,7 @@ class Display(ThemedTk):
         stopButton.grid(row=2, column=0)
 
         # Call button
-        phys_button = StopButton.getInstance()
+        #phys_button = StopButton.getInstance()
         self.photo =  tk.PhotoImage(file = "images/emergency call icon.png")
         stopButton = tk.Button(
                     self,
@@ -83,7 +83,7 @@ class Display(ThemedTk):
         self.change_frame(next(self.status_iterator))
 
         self.text = None
-        # self.after(500, self.listenAudioInput)
+        # self.after(500, self.listenAudioInput) ###
 
     def change_theme(self):
         self.style.theme_use(self.selected_theme.get())
@@ -109,6 +109,7 @@ class Display(ThemedTk):
 
 def pressStop():
     print("Stop button pressed.")
+    
 def pressCall():
     print("Call button pressed.")
 

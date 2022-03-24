@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
-import ButtonFrame
-from time import sleep
 
+from time import sleep
+import navigation as nav
 
 class StopButton():
     __instance = None
@@ -12,9 +12,12 @@ class StopButton():
         return StopButton.__instance
 
     def button_callback(self,channel):
-        ButtonFrame.pressStop()
+        self.move_bot.stop()
         sleep(1)
+        
     def __init__(self):
+        self.move_bot = nav.Navigation()
+    
         if StopButton.__instance != None:
             raise Exception("This class is a singleton!")
         else:
