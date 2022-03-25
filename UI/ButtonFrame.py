@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-import navigation as nav
+# import navigation as nav
 
 class ButtonFrame(ttk.Frame):
     def __init__(self, container, frame_status):

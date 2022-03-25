@@ -83,7 +83,7 @@ class Display(ThemedTk):
         self.change_frame(next(self.status_iterator))
 
         self.text = None
-        # self.after(500, self.listenAudioInput)
+        self.after(500, self.listenAudioInput)
 
     def change_theme(self):
         self.style.theme_use(self.selected_theme.get())
