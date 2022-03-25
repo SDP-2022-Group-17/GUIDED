@@ -2,7 +2,7 @@ import os
 import tkinter as tk
 from tkinter import ttk
 from ttkthemes import ThemedTk
-#from StopButton import StopButton
+from StopButton import StopButton
 
 import itertools
 
@@ -96,7 +96,8 @@ class Display(ThemedTk):
         button_frame.tkraise()
 
         path = os.path.join(os.getcwd(), 'sounds', "{}.mp3".format(frame_status))
-        os.system("start " + u"{}".format(path))
+        
+        self.after(100, lambda : os.system("mpg123 " + u"{}".format(path)))
 
     def listenAudioInput(self):
         speech_recognition = speech.Speech()
