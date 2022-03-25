@@ -46,7 +46,7 @@ class Display(ThemedTk):
         canvas.create_image(0, 0, anchor="nw", image=self.logo_photo)
 
         # Stop button
-        phys_button = StopButton.getInstance()
+        #phys_button = StopButton.getInstance()
         self.help_photo =  tk.PhotoImage(file = "images/stopsign.png")
         stopButton = tk.Button(
                     self,
@@ -56,7 +56,7 @@ class Display(ThemedTk):
         stopButton.grid(row=2, column=0)
 
         # Call button
-        phys_button = StopButton.getInstance()
+        #phys_button = StopButton.getInstance()
         self.photo =  tk.PhotoImage(file = "images/emergency call icon.png")
         stopButton = tk.Button(
                     self,
@@ -83,7 +83,7 @@ class Display(ThemedTk):
         self.change_frame(next(self.status_iterator))
 
         self.text = None
-        self.after(500, self.listenAudioInput)
+        # self.after(500, self.listenAudioInput) ###
 
     def change_theme(self):
         self.style.theme_use(self.selected_theme.get())
@@ -96,7 +96,8 @@ class Display(ThemedTk):
         button_frame.tkraise()
 
         path = os.path.join(os.getcwd(), 'sounds', "{}.mp3".format(frame_status))
-        os.system("start " + u"{}".format(path))
+
+        self.after(100, lambda : os.system("mpg123 " + u"{}".format(path)))
 
     def listenAudioInput(self):
         speech_recognition = speech.Speech()
@@ -109,6 +110,7 @@ class Display(ThemedTk):
 
 def pressStop():
     print("Stop button pressed.")
+
 def pressCall():
     print("Call button pressed.")
 
