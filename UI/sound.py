@@ -7,8 +7,8 @@ from gtts import gTTS
 import os
 
 labels = {"start": "Where do you want to go?",
-          "end": "Going to: Room A.",
-          "travel": "You have arrived at your destination."}
+          "office": "Going to: Office.",
+          "bathroom": "Going to: Bathroom."}
 
 for i in ["start", "travel", "end"]:
     # Passing the text and language to the engine,
@@ -21,6 +21,3 @@ for i in ["start", "travel", "end"]:
     # Saving the converted audio in a mp3 file named
     # welcome
     myobj.save(i+".mp3")
-
-    # Playing the converted file
-    os.system("start " + i + ".mp3")

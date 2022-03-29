@@ -14,10 +14,10 @@ class StopButton():
     def button_callback(self,channel):
         self.move_bot.stop()
         sleep(1)
-        
+
     def __init__(self):
         #self.move_bot = nav.Navigation()
-    
+        
         if StopButton.__instance != None:
             raise Exception("This class is a singleton!")
         else:
@@ -26,4 +26,3 @@ class StopButton():
             GPIO.setwarnings(False)
             GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
             GPIO.add_event_detect(18,GPIO.RISING,callback=self.button_callback)
-            

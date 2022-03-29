@@ -5,50 +5,63 @@ from StopButton import StopButton
 import audio
 
 class ButtonFrame(ttk.Frame):
-    def __init__(self, container, frame_status):
+    def __init__(self, container):
         container.style.configure('redbg.TFrame', background = 'red')
 
-        super().__init__(container, style = 'red.TFrame')
+        super().__init__(container)
 
         phys_button = StopButton.getInstance()
         #self.move_bot = nav.Navigation()
 
+
+        # Stop button
+        #phys_button = StopButton.getInstance()
+        self.help_photo =  tk.PhotoImage(file = "images/stopsign.png")
+        stopButton = tk.Button(
+                    self,
+                    image = self.help_photo,
+                    bd = 0,
+                    command = self.pressStop)
+        stopButton.pack(side='left', fill='both', padx=5, pady=5)
+        
         b1 = ttk.Button(
             self,
             text="Office",
             style='large_font.TButton',
-            command=lambda : self.pressRoomA(container))
+            command=lambda : self.pressOffice(container))
         b1.pack(expand=True, side='left', fill='both', padx=5, pady=5)
 
         b2 = ttk.Button(
             self,
             text="Bathroom",
             style='large_font.TButton',
-            command=lambda : self.pressHome(container)
+            command=lambda : self.pressBathroom(container)
             )
-        b2.pack(expand=True, side='right', fill='both', padx=5, pady=5)
+        b2.pack(expand=True, side='left', fill='both', padx=5, pady=5)
 
-    def pressRoomA(self,container):
+        # Call button
+        #phys_button = StopButton.getInstance()
+        self.photo =  tk.PhotoImage(file = "images/emergency call icon.png")
+        stopButton = tk.Button(
+                    self,
+                    image = self.photo,
+                    bd = 0,
+                    command = self.pressCall)
+        stopButton.pack(side='right', fill='both', padx=5, pady=5)
+
+
+    def pressOffice(self,container):
         pass
         #self.move_bot.roomA()
-        container.change_frame(next(container.status_iterator))
-    def pressHome(self,container):
+        container.change_frame('office')
+        
+    def pressBathroom(self,container):
         pass
         #self.move_bot.home()
-        #container.change_frame(next(container.status_iterator))
-
-
-    def pressStart(self,container):
-        self.ROS()
-
-
-    def pressNewJourney(self,container):
-        self.ROS()
-
-
+        container.change_frame('bathroom')
+       
     def pressStop(self):
-        #self.move_bot.stop()
         print("Stop button pressed.")
 
-    def ROS(self):
-        pass
+    def pressCall(self):
+        print("Call button pressed.")
