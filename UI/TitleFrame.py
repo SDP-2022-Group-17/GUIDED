@@ -12,10 +12,10 @@ class TitleFrame(ttk.Frame):
         l1 = ttk.Label(self, font=LARGEFONT)
         l1.pack()
         if frame_status == "start":
-            l1.configure(text="Where do you want to go?")
+            l1.configure(text="Welcome to Guided")
         elif frame_status == "travel":
-            l1.configure(text="Going to: Room A.")
+            l1.configure(text="Going to: Office")
         elif frame_status == "end":
-            l1.configure(text="You have arrived at your destination.")
+            l1.configure(text="Going to: Bathroom")
         else:
             print("Invalid status")

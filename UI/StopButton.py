@@ -16,7 +16,7 @@ class StopButton():
         sleep(1)
         
     def __init__(self):
-        self.move_bot = nav.Navigation()
+        #self.move_bot = nav.Navigation()
     
         if StopButton.__instance != None:
             raise Exception("This class is a singleton!")

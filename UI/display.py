@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 from ttkthemes import ThemedTk
 from StopButton import StopButton
-
+# import audio
 import itertools
 
 from ButtonFrame import ButtonFrame
@@ -68,7 +68,9 @@ class Display(ThemedTk):
         # initializing frames to an empty array
         self.title_frames = {}
         self.button_frames = {}
-
+    
+ 
+        
         frame_statuses = ["start", "travel", "end"]
         for frame_status in frame_statuses:
             title_frame = TitleFrame(self, frame_status)
@@ -83,7 +85,7 @@ class Display(ThemedTk):
         self.change_frame(next(self.status_iterator))
 
         self.text = None
-        # self.after(500, self.listenAudioInput) ###
+        self.after(500, self.listenAudioInput) ###
 
     def change_theme(self):
         self.style.theme_use(self.selected_theme.get())
@@ -97,15 +99,18 @@ class Display(ThemedTk):
 
         path = os.path.join(os.getcwd(), 'sounds', "{}.mp3".format(frame_status))
         
-        self.after(100, lambda : os.system("mpg123 " + u"{}".format(path)))
-
+        # self.after(100, lambda : os.system("mpg123 " + u"{}".format(path)))
+        
     def listenAudioInput(self):
         speech_recognition = speech.Speech()
         text = speech_recognition.listenMicrophone()
-        self.after(500, display.listenAudioInput)
+        self.after(500, self.listenAudioInput)
 
-        if text:
-            self.change_frame(next(self.status_iterator))
+        if 'office' in text:
+            self.change_frame('travel')
+            self.text = text
+        elif 'bathroom' in text:
+            self.change_frame('end')
             self.text = text
 
 def pressStop():
