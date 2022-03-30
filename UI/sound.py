@@ -10,7 +10,7 @@ labels = {"start": "Where do you want to go?",
           "office": "Going to: Office.",
           "bathroom": "Going to: Bathroom."}
 
-for i in ["start", "travel", "end"]:
+for i in ["start", "office", "bathroom"]:
     # Passing the text and language to the engine,
     # here we have marked slow=False. Which tells
     # the module that the converted audio should
