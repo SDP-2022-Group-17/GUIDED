@@ -8,25 +8,27 @@ class Speech(sr.Recognizer):
         # for index, name in enumerate(sr.Microphone.list_microphone_names()):
             # print("Microphone with name \"{1}\" found for 'Microphone(device_index={0})'".format(index,name))
 
-        self.energy_threshold = 6000
+        self.energy_threshold = 20000
         self.dynamic_energy_threshold = False 
+        
         # self.pause_threshold = 100000
-
-        # print("Energy threshold: {}".format(self.energy_threshold))
-        # print("Pause threshold: {}".format(self.pause_threshold))
+        
+        self.microphone = sr.Microphone()
+        with self.microphone as source:
+            self.adjust_for_ambient_noise(source, duration = 10)
 
     """
     Using a Microphone for audio input
     """
     def listenMicrophone(self):
         text = None
-        with sr.Microphone() as source:
+        with self.microphone as source:
             print("Please say something:")
             try:
-                audio = self.listen(source, timeout=1)
+                audio = self.listen(source, timeout=1, phrase_time_limit=10)
                 print("LISTENED")
-                text = self.recognize_sphinx(audio)
-                print("You said: \n" + text)
+                text = self.recognize_google(audio)
+                print("You said: " + text)
             except sr.WaitTimeoutError as e:
                 print(e)
             except sr.UnknownValueError:
@@ -37,4 +39,7 @@ class Speech(sr.Recognizer):
 
 if __name__ == "__main__":
     speech_recognition = Speech()
-    text = speech_recognition.listenMicrophone()
+    # print("Energy threshold: {}".format(speech_recognition.energy_threshold))
+    # print("Pause threshold: {}".format(speech_recognition.pause_threshold))
+    while True:
+        speech_recognition.listenMicrophone()

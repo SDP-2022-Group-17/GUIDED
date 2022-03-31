@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
-#import navigation as nav
+import navigation as nav
 from StopButton import StopButton
-import audio
 
 class ButtonFrame(ttk.Frame):
     def __init__(self, container):
@@ -50,16 +49,14 @@ class ButtonFrame(ttk.Frame):
         stopButton.pack(side='right', fill='both', padx=5, pady=5)
 
 
-    def pressOffice(self,container):
-        pass
-        #self.move_bot.roomA()
+    def pressOffice(self, container):
         container.change_frame('office')
+        self.move_bot.roomA()
         
     def pressBathroom(self,container):
-        pass
-        #self.move_bot.home()
         container.change_frame('bathroom')
-       
+        self.move_bot.home()
+
     def pressStop(self):
         print("Stop button pressed.")
 

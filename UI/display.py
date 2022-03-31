@@ -44,8 +44,8 @@ class Display(ThemedTk):
         canvas.create_image(0, 0, anchor="nw", image=self.logo_photo)
 
         # Office and Bathroom buttons
-        button_frame = ButtonFrame(self)
-        button_frame.grid(column=1, row=2, sticky='nsew')
+        self.button_frame = ButtonFrame(self)
+        self.button_frame.grid(column=1, row=2, sticky='nsew')
         
         # initializing frames to an empty array
         self.title_frames = {}
@@ -59,6 +59,7 @@ class Display(ThemedTk):
         self.change_frame('start')
 
         self.text = None
+        self.speech_recognition = speech.Speech()
         self.after(1000, self.listenAudioInput) ###
 
     def change_theme(self):
@@ -72,16 +73,17 @@ class Display(ThemedTk):
         self.after(100, lambda : os.system("mpg123 -q " + u"{}".format(path)))
 
     def listenAudioInput(self):
-        speech_recognition = speech.Speech()
-        text = speech_recognition.listenMicrophone()
-        self.after(500, self.listenAudioInput)
+        text = self.speech_recognition.listenMicrophone()
+        self.after(1000, self.listenAudioInput)
         
         if text:
             if 'office' in text:
-                self.change_frame('office')
+                #self.change_frame('office')
+                self.button_frame.pressOffice(self)
                 self.text = text
             elif 'bathroom' in text:
-                self.change_frame('bathroom')
+                #self.change_frame('bathroom')
+                self.button_frame.pressBathroom(self)
                 self.text = text
 
 if __name__ == "__main__":
