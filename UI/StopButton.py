@@ -1,4 +1,4 @@
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 
 from time import sleep
 import navigation as nav
@@ -12,7 +12,7 @@ class StopButton():
         return StopButton.__instance
 
     def button_callback(self,channel):
-        self.move_bot.stop()
+        #self.move_bot.stop()
         sleep(1)
 
     def __init__(self):

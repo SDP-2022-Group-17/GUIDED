@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
-import navigation as nav
-from StopButton import StopButton
+#import navigation as nav
+#from StopButton import StopButton
 
 class ButtonFrame(ttk.Frame):
     def __init__(self, container):
@@ -9,7 +9,7 @@ class ButtonFrame(ttk.Frame):
 
         super().__init__(container)
 
-        phys_button = StopButton.getInstance()
+        #phys_button = StopButton.getInstance()
         #self.move_bot = nav.Navigation()
 
 
@@ -51,11 +51,11 @@ class ButtonFrame(ttk.Frame):
 
     def pressOffice(self, container):
         container.change_frame('office')
-        self.move_bot.roomA()
+        #self.move_bot.roomA()
         
     def pressBathroom(self,container):
         container.change_frame('bathroom')
-        self.move_bot.home()
+        #self.move_bot.home()
 
     def pressStop(self):
         print("Stop button pressed.")

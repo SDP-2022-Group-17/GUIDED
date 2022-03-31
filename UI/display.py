@@ -2,7 +2,7 @@ import os
 import tkinter as tk
 from tkinter import ttk
 from ttkthemes import ThemedTk
-from StopButton import StopButton
+#from StopButton import StopButton
 import itertools
 
 from ButtonFrame import ButtonFrame
@@ -60,7 +60,7 @@ class Display(ThemedTk):
 
         self.text = None
         self.speech_recognition = speech.Speech()
-        self.after(1000, self.listenAudioInput) ###
+        self.after(1000, self.listenAudioInput)
 
     def change_theme(self):
         self.style.theme_use(self.selected_theme.get())
@@ -75,16 +75,22 @@ class Display(ThemedTk):
     def listenAudioInput(self):
         text = self.speech_recognition.listenMicrophone()
         self.after(1000, self.listenAudioInput)
-        
+
         if text:
-            if 'office' in text:
-                #self.change_frame('office')
-                self.button_frame.pressOffice(self)
-                self.text = text
-            elif 'bathroom' in text:
-                #self.change_frame('bathroom')
-                self.button_frame.pressBathroom(self)
-                self.text = text
+            if 'stop' in text:
+                print("stop")
+            elif 'office' in text:
+                # self.change_frame('office')
+                # self.button_frame.pressOffice(self)
+                # self.text = text
+                print("push office")
+            elif 'toilet' in text:
+                # self.change_frame('bathroom')
+                # self.button_frame.pressBathroom(self)
+                # self.text = text
+                print("push bathroom")
+            elif 'kitchen' in self.text:
+                print("push kitchen")
 
 if __name__ == "__main__":
     display = Display()
