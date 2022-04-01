@@ -12,12 +12,12 @@ class StopButton():
         return StopButton.__instance
 
     def button_callback(self,channel):
-        self.move_bot.stop()
+        #self.move_bot.stop()
         sleep(1)
 
     def __init__(self):
         #self.move_bot = nav.Navigation()
-        
+
         if StopButton.__instance != None:
             raise Exception("This class is a singleton!")
         else:
