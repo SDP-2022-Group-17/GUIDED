@@ -8,9 +8,10 @@ import os
 
 labels = {"start": "Where do you want to go?",
           "office": "Going to: Office.",
-          "bathroom": "Going to: Bathroom."}
+          "restroom": "Going to: Restroom.",
+          "kitchen": "Going to: Kitchen."}
 
-for i in ["start", "office", "bathroom"]:
+for i in ["start", "office", "restroom", "kitchen"]:
     # Passing the text and language to the engine,
     # here we have marked slow=False. Which tells
     # the module that the converted audio should
