@@ -1,6 +1,6 @@
 from tkinter import ttk
 import tkinter as tk
-# import navigation as nav
+import navigation as nav
 
 class Format:
     background = '#efefef'
@@ -78,6 +78,8 @@ class ButtonFrame(ttk.Frame):
     def __init__(self, container):
         super().__init__(container, style='transparent.TFrame')
         self.logo_photo = tk.PhotoImage(file = "images/office_hover.png")
+        global move_bot
+        move_bot = nav.Navigation()
 
         kitchen_button = tk.Button(
             self,
@@ -116,25 +118,27 @@ class ButtonFrame(ttk.Frame):
         restroom_button.pack(expand=True, side='left', fill='x', ipady=30, padx=5, pady=5)
 
 class Functions:
+
+
     @staticmethod
     def pressCall():
         print("Call button pressed.")
 
-    @staticmethod
     def pressKitchen(container):
         container.change_frame('kitchen')
-        # self.move_bot.roomA()
+        move_bot.office()
 
     @staticmethod
     def pressOffice(container):
         container.change_frame('office')
-        # self.move_bot.roomA()
+        move_bot.office()
 
     @staticmethod
     def pressRestroom(container):
         container.change_frame('restroom')
-        # self.move_bot.home()
+        move_bot.restroom()
 
     @staticmethod
     def pressStop():
+        move_bot.stop()
         print("Stop button pressed.")

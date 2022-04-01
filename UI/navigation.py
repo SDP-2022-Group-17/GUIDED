@@ -25,15 +25,13 @@ class Navigation():
     def office(self):
         stdin, stdout, stderr = self.client.exec_command('roslaunch simple_navigation_goals movebase_seqB.launch')
 
-        print(stdout.read().decode())
-
     def restroom(self):
         stdin, stdout, stderr = self.client.exec_command('roslaunch simple_navigation_goals movebase_seq_home.launch')
 
     def stop(self):
         stdin, stdout, stderr = self.client.exec_command('rostopic pub /move_base/cancel actionlib_msgs/GoalID -- {}')
-        print(stdout.read().decode())
 
 if __name__ == '__main__':
-    nav = Navigation()
-    nav.office()
+    pass
+    # nav = Navigation()
+    # nav.office()
