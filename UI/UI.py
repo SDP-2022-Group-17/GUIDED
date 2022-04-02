@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from format import *
+from style import *
 
 import os
 import speech
@@ -10,7 +10,7 @@ import navigation as nav
 class UI(tk.Tk):
     def __init__(self):
         super().__init__()
-        Format(self)
+        self.style = Style(self)
 
         # Header with logo
         self.logo_frame = LogoFrame(self)
@@ -21,11 +21,11 @@ class UI(tk.Tk):
         self.button_frame.grid(column=1, row=2, sticky='nsew')
 
         # Stop button
-        self.stop_photo =  tk.PhotoImage(file = "images/stopsign.png")
+        self.stop_photo = tk.PhotoImage(file = "images/stopsign.png")
         stopButton = tk.Button(
                     self,
                     image = self.stop_photo,
-                    background = Format.background,
+                    background = Style.background,
                     bd = 0,
                     command = Functions.pressStop)
         stopButton.grid(row=3, column=1, sticky='nsew')
@@ -40,10 +40,11 @@ class UI(tk.Tk):
 
         self.change_frame('start')
 
-        # self.speech_recognition = speech.Speech()
-        # self.after(1000, self.listenAudioInput)
+        self.speech_recognition = speech.Speech()
+        self.after(1000, self.listenAudioInput)
 
         self.move_bot = nav.Navigation()
+
 
     def change_frame(self, frame_status):
         title_frame = self.title_frames[frame_status]
@@ -54,22 +55,25 @@ class UI(tk.Tk):
 
     def listenAudioInput(self):
         text = self.speech_recognition.listenMicrophone()
-        self.after(2000, self.listenAudioInput)
+
 
         if text:
             if 'stop' in text:
+                Functions.pressStop()
                 print("stop")
-                return
             elif 'office' in text:
                 self.change_frame('office')
-                self.button_frame.pressOffice(self)
+                Functions.pressOffice(self)
                 print("push office")
-            elif 'toilet' in text:
-                self.change_frame('bathroom')
-                self.button_frame.pressRestroom(self)
+            elif 'toilet' in text or 'restroom' in text or 'bathroom' in text or 'lavatory' in text:
+                self.change_frame('restroom')
+                Functions.pressRestroom(self)
                 print("push bathroom")
             elif 'kitchen' in text:
+                self.change_frame('kitchen')
+                Functions.pressKitchen(self)
                 print("push kitchen")
+        self.after(1000, self.listenAudioInput)
 
 if __name__ == "__main__":
     ui = UI()

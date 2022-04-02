@@ -1,8 +1,9 @@
 from tkinter import ttk
 import tkinter as tk
 import navigation as nav
+from StopButton import StopButton
 
-class Format:
+class Style:
     background = '#efefef'
     yellow ='#F4F009'
     font=('Montserrat', 20, 'bold')
@@ -35,12 +36,13 @@ class Format:
         self.style.configure('logo.TLabel', background=self.header)
         self.style.configure('logo.TButton', background=self.header)
 
+
 class TitleFrame(ttk.Frame):
     def __init__(self, container, frame_status):
         super().__init__(container, style='transparent.TFrame')
 
         l1 = tk.Label(self, font=('Montserrat', 30),
-                      foreground=Format.header, background=Format.background)
+                      foreground=Style.header, background=Style.background)
         l1.pack()
         if frame_status == "start":
             l1.configure(text="Where do you want to go?")
@@ -64,7 +66,7 @@ class LogoFrame(ttk.Frame):
 
 
         # Help button
-        #phys_button = StopButton.getInstance()
+        phys_button = StopButton.getInstance()
         self.photo =  tk.PhotoImage(file = "images/small_help-modified.png")
         stopButton = tk.Button(
                     self,
@@ -126,7 +128,7 @@ class Functions:
 
     def pressKitchen(container):
         container.change_frame('kitchen')
-        move_bot.office()
+        move_bot.kitchen()
 
     @staticmethod
     def pressOffice(container):

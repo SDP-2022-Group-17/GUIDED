@@ -1,0 +1,139 @@
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.front.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM front
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround40.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround40
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround41
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround50
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround51
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround71.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround71
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM iec958
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
+ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
+ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type for card
+ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type for card
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.front.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM front
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround21
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround40.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround40
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround41
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround50
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround51
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.surround71.0:CARD=0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM surround71
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM iec958
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_headpho.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
+ALSA lib pcm_oss.c:377:(_snd_pcm_oss_open) Unknown field port
+ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type for card
+ALSA lib pcm_usb_stream.c:486:(_snd_pcm_usb_stream_open) Invalid type for card
+Microphone with name "bcm2835 Headphones: - (hw:0,0)" found for 'Microphone(device_index=0)'
+Microphone with name "USB Device 0x46d:0x825: Audio (hw:1,0)" found for 'Microphone(device_index=1)'
+Microphone with name "sysdefault" found for 'Microphone(device_index=2)'
+Microphone with name "samplerate" found for 'Microphone(device_index=3)'
+Microphone with name "speexrate" found for 'Microphone(device_index=4)'
+Microphone with name "pulse" found for 'Microphone(device_index=5)'
+Microphone with name "upmix" found for 'Microphone(device_index=6)'
+Microphone with name "vdownmix" found for 'Microphone(device_index=7)'
+Microphone with name "dmix" found for 'Microphone(device_index=8)'
+Microphone with name "default" found for 'Microphone(device_index=9)'
+Microphone with name "/dev/dsp" found for 'Microphone(device_index=10)'
+Microphone with name "/dev/dsp1" found for 'Microphone(device_index=11)'
+Please say something:
+Traceback (most recent call last):
+  File "speech.py", line 47, in <module>
+    text = speech_recognition.listenMicrophone()
+  File "speech.py", line 27, in listenMicrophone
+    audio = self.listen(source, timeout=0.1)
+  File "/home/group17/.local/lib/python3.8/site-packages/speech_recognition/__init__.py", line 652, in listen
+    buffer = source.stream.read(source.CHUNK)
+  File "/home/group17/.local/lib/python3.8/site-packages/speech_recognition/__init__.py", line 161, in read
+    return self.pyaudio_stream.read(size, exception_on_overflow=False)
+  File "/home/group17/.local/lib/python3.8/site-packages/pyaudio.py", line 608, in read
+    return pa.read_stream(self._stream, num_frames, exception_on_overflow)
+KeyboardInterrupt
