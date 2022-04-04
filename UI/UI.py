@@ -56,20 +56,24 @@ class UI(tk.Tk):
     def listenAudioInput(self):
         text = self.speech_recognition.listenMicrophone()
 
+        stop_words = ['stop', 'danger']
+        office_words = ['office', 'workspace', 'workplace', 'desk']
+        toilet_words = ['toilet', 'restroom', 'bathroom', 'lavatory', 'wc', 'washroom']
+        kitchen_words = ['kitchen']
 
         if text:
-            if 'stop' in text:
+            if any(word in text for word in stop_words):
                 Functions.pressStop()
                 print("stop")
-            elif 'office' in text:
+            elif any(word in text for word in office_words):
                 self.change_frame('office')
                 Functions.pressOffice(self)
                 print("push office")
-            elif 'toilet' in text or 'restroom' in text or 'bathroom' in text or 'lavatory' in text:
+            elif any(word in text for word in toilet_words):
                 self.change_frame('restroom')
                 Functions.pressRestroom(self)
                 print("push bathroom")
-            elif 'kitchen' in text:
+            elif any(word in text for word in kitchen_words):
                 self.change_frame('kitchen')
                 Functions.pressKitchen(self)
                 print("push kitchen")
