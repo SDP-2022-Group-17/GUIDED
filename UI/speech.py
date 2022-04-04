@@ -4,15 +4,15 @@ class Speech(sr.Recognizer):
     def __init__(self):
 
         super().__init__()
-        
+
         # for index, name in enumerate(sr.Microphone.list_microphone_names()):
             # print("Microphone with name \"{1}\" found for 'Microphone(device_index={0})'".format(index,name))
 
         self.energy_threshold = 20000
-        self.dynamic_energy_threshold = False 
-        
+        self.dynamic_energy_threshold = False
+
         # self.pause_threshold = 100000
-        
+
         self.microphone = sr.Microphone()
         with self.microphone as source:
             self.adjust_for_ambient_noise(source, duration = 10)
@@ -33,8 +33,9 @@ class Speech(sr.Recognizer):
                 print(e)
             except sr.UnknownValueError:
                 print("Speech Recognition could not understand audio")
+                return "_"
             except sr.RequestError as e:
-                print("Could not request results from Google Speech Recognition service; {0}".format(e))      
+                print("Could not request results from Google Speech Recognition service; {0}".format(e))
         return text
 
 if __name__ == "__main__":

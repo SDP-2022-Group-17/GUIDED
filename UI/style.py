@@ -36,7 +36,6 @@ class Style:
         self.style.configure('logo.TLabel', background=self.header)
         self.style.configure('logo.TButton', background=self.header)
 
-
 class TitleFrame(ttk.Frame):
     def __init__(self, container, frame_status):
         super().__init__(container, style='transparent.TFrame')
@@ -49,9 +48,11 @@ class TitleFrame(ttk.Frame):
         elif frame_status == "office":
             l1.configure(text="Going to: Office")
         elif frame_status == "restroom":
-            l1.configure(text="Going to: Restroom")
+            l1.configure(text="Going to: Toilet")
         elif frame_status == "kitchen":
             l1.configure(text="Going to: Kitchen")
+        elif frame_status == "invalid":
+            l1.configure(text="Sorry, I didn't understand that.")
         else:
             print("Invalid status")
 
@@ -64,9 +65,8 @@ class LogoFrame(ttk.Frame):
         logo = ttk.Label(self, image=self.logo_photo, style='logo.TLabel')
         logo.place(relx = 0.5, rely=0, anchor='n')
 
-
         # Help button
-        phys_button = StopButton.getInstance()
+        # phys_button = StopButton.getInstance()
         self.photo =  tk.PhotoImage(file = "images/small_help-modified.png")
         stopButton = tk.Button(
                     self,
@@ -80,8 +80,6 @@ class ButtonFrame(ttk.Frame):
     def __init__(self, container):
         super().__init__(container, style='transparent.TFrame')
         self.logo_photo = tk.PhotoImage(file = "images/office_hover.png")
-        global move_bot
-        move_bot = nav.Navigation()
 
         kitchen_button = tk.Button(
             self,
@@ -110,7 +108,7 @@ class ButtonFrame(ttk.Frame):
         restroom_button = tk.Button(
             self,
             foreground = '#fff',
-            text = 'RESTROOM',
+            text = 'TOILET',
             font = ('Montserrat', 20, 'bold'),
             image = self.logo_photo,
             compound='center',
@@ -120,7 +118,8 @@ class ButtonFrame(ttk.Frame):
         restroom_button.pack(expand=True, side='left', fill='x', ipady=30, padx=5, pady=5)
 
 class Functions:
-
+    global move_bot
+    move_bot = nav.Navigation()
 
     @staticmethod
     def pressCall():

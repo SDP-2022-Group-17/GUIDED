@@ -32,8 +32,8 @@ class UI(tk.Tk):
 
         # initializing title frames to an empty array
         self.title_frames = {}
-        frame_statuses = ["start", "office", "restroom", "kitchen"]
-        for frame_status in frame_statuses:
+        self.frame_statuses = ["start", "office", "restroom", "kitchen", 'invalid']
+        for frame_status in self.frame_statuses:
             title_frame = TitleFrame(self, frame_status)
             self.title_frames[frame_status] = title_frame
             title_frame.grid(column=1, row=1, sticky='nsew')
@@ -47,15 +47,15 @@ class UI(tk.Tk):
 
 
     def change_frame(self, frame_status):
-        title_frame = self.title_frames[frame_status]
-        title_frame.tkraise()
+        if frame_status in self.frame_statuses:
+            title_frame = self.title_frames[frame_status]
+            title_frame.tkraise()
 
-        # path = os.path.join(os.getcwd(), 'sounds', "{}.mp3".format(frame_status))
-        # self.after(100, lambda: os.system("mpg123 -q " + u"{}".format(path)))
+            path = os.path.join(os.getcwd(), 'sounds', "{}.mp3".format(frame_status))
+            self.after(100, lambda: os.system("mpg123 -q " + u"{}".format(path)))
 
     def listenAudioInput(self):
         text = self.speech_recognition.listenMicrophone()
-
 
         if text:
             if 'stop' in text:
@@ -65,7 +65,7 @@ class UI(tk.Tk):
                 self.change_frame('office')
                 Functions.pressOffice(self)
                 print("push office")
-            elif 'toilet' in text or 'restroom' in text or 'bathroom' in text or 'lavatory' in text:
+            elif 'toilet' in text or 'restroom' in text or 'bathroom' in text or 'lavatory' in text or 'washroom' in text:
                 self.change_frame('restroom')
                 Functions.pressRestroom(self)
                 print("push bathroom")
@@ -73,6 +73,10 @@ class UI(tk.Tk):
                 self.change_frame('kitchen')
                 Functions.pressKitchen(self)
                 print("push kitchen")
+            else:
+                self.change_frame('invalid')
+
+            self.after(1000000, lambda : self.change_frame('start'))
         self.after(1000, self.listenAudioInput)
 
 if __name__ == "__main__":
