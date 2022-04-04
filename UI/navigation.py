@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 import paramiko
-from getpass import getpass
+from cryptography.fernet import Fernet
 
 class Navigation():
     def __init__(self):
-        self.password = getpass()
+        key = b'OHKvQBr651jp3vE3lX3ECKJGuOIg04Tetaxpt6BIHJQ='
+        fernet = Fernet(key)
+        self.password=b'gAAAAABiSwsvHK3dWTHAsuT6R4T_7YdMh5QEArIM3fHmIhQjJugkuLXZLlQtbZjH9_K9XUeCc5y4ptU4xXFtaEDr1e-HDNppoA=='
+        self.password = fernet.decrypt(self.password).decode()
+        
         self.sdp_robots = 'cassatt'
         self.username = 's1970051'
         self.hostname = 'cassatt.inf.ed.ac.uk'
@@ -38,6 +42,5 @@ class Navigation():
         stdin, stdout, stderr = self.client.exec_command('rostopic pub /move_base/cancel actionlib_msgs/GoalID -- {}')
 
 if __name__ == '__main__':
-    pass
-    # nav = Navigation()
-    # nav.office()
+    nav = Navigation()
+    nav.office()
