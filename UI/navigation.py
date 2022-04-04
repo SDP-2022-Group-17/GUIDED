@@ -22,18 +22,22 @@ class Navigation():
             print("[!] Cannot connect to the SSH Server")
             exit()
 
-    def office(self):
-        stdin, stdout, stderr = self.client.exec_command('roslaunch simple_navigation_goals movebase_seqB.launch')
+    def entrance(self):
+        stdin, stdout, stderr = self.client.exec_command('roslaunch simple_navigation_goals entrance.launch')
 
-        print(stdout.read().decode())
+    def office(self):
+        stdin, stdout, stderr = self.client.exec_command('roslaunch simple_navigation_goals office.launch')
 
     def restroom(self):
-        stdin, stdout, stderr = self.client.exec_command('roslaunch simple_navigation_goals movebase_seq_home.launch')
+        stdin, stdout, stderr = self.client.exec_command('roslaunch simple_navigation_goals restroom.launch')
+
+    def kitchen(self):
+        stdin, stdout, stderr = self.client.exec_command('roslaunch simple_navigation_goals kitchen.launch')
 
     def stop(self):
         stdin, stdout, stderr = self.client.exec_command('rostopic pub /move_base/cancel actionlib_msgs/GoalID -- {}')
-        print(stdout.read().decode())
 
 if __name__ == '__main__':
-    nav = Navigation()
-    nav.office()
+    pass
+    # nav = Navigation()
+    # nav.office()
