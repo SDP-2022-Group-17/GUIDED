@@ -1,7 +1,7 @@
 from tkinter import ttk
 import tkinter as tk
-import navigation as nav
-from StopButton import StopButton
+# import navigation as nav
+# from StopButton import StopButton
 
 class Style:
     background = '#efefef'
@@ -73,20 +73,20 @@ class LogoFrame(ttk.Frame):
                     image = self.photo,
                     background = '#181d21',
                     bd = 0,
-                    command = Functions.pressCall)
+                    command = lambda : Functions.pressCall(container))
         stopButton.pack(side='right', anchor='ne', pady=5)
 
 class ButtonFrame(ttk.Frame):
     def __init__(self, container):
         super().__init__(container, style='transparent.TFrame')
-        self.logo_photo = tk.PhotoImage(file = "images/office_hover.png")
+        self.photo = tk.PhotoImage(file = "images/office_hover.png")
 
         kitchen_button = tk.Button(
             self,
             foreground = '#fff',
             text = 'KITCHEN',
             font = ('Montserrat', 20, 'bold'),
-            image = self.logo_photo,
+            image = self.photo,
             compound='center',
             bd = 0,
             activeforeground = '#697B8B',
@@ -98,7 +98,7 @@ class ButtonFrame(ttk.Frame):
             foreground = '#fff',
             text = 'OFFICE',
             font = ('Montserrat', 20, 'bold'),
-            image = self.logo_photo,
+            image = self.photo,
             compound='center',
             bd = 0,
             activeforeground = '#697B8B',
@@ -110,20 +110,42 @@ class ButtonFrame(ttk.Frame):
             foreground = '#fff',
             text = 'TOILET',
             font = ('Montserrat', 20, 'bold'),
-            image = self.logo_photo,
+            image = self.photo,
             compound='center',
             bd = 0,
             activeforeground = '#697B8B',
             command=lambda : Functions.pressRestroom(container))
         restroom_button.pack(expand=True, side='left', fill='x', ipady=30, padx=5, pady=5)
 
+class HelpFrame (ttk.Frame):
+    def __init__(self, container):
+        super().__init__(container, style='transparent.TFrame')
+
+        l1 = tk.Label(self, font=('Montserrat', 18),
+                      foreground=Style.header, background=Style.background)
+        l1.pack(expand=1, fill='y')
+        l1.configure(text="This robot can bring you to the Office, Kitchen or Toilet.")
+
+        self.photo = tk.PhotoImage(file = "images/back.png")
+        back_button = tk.Button(
+            self,
+            foreground = '#fff',
+            text = 'BACK',
+            font = ('Montserrat', 16, 'bold'),
+            image = self.photo,
+            compound='center',
+            bd = 0,
+            activeforeground = '#697B8B',
+            command=lambda : container.change_help_frame(help=False))
+        back_button.pack()
+
 class Functions:
     global move_bot
-    move_bot = nav.Navigation()
+    # move_bot = nav.Navigation()
 
     @staticmethod
-    def pressCall():
-        print("Call button pressed.")
+    def pressCall(container):
+         container.change_help_frame(help=True)
 
     def pressKitchen(container):
         container.change_frame('kitchen')

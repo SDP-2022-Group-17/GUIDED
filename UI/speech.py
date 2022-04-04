@@ -33,7 +33,7 @@ class Speech(sr.Recognizer):
                 print(e)
             except sr.UnknownValueError:
                 print("Speech Recognition could not understand audio")
-                return "_"
+                # return "_"
             except sr.RequestError as e:
                 print("Could not request results from Google Speech Recognition service; {0}".format(e))
         return text
