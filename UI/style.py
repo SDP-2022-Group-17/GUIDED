@@ -15,7 +15,7 @@ class Style:
         container.title("Welcome to guidED")
         container.configure(background=self.background)
 
-        # container.attributes("-fullscreen", True)
+        container.attributes("-fullscreen", True)
 
         # Centralise widgets by giving empty columns a weight
         # so that they consume all extra space
@@ -47,8 +47,8 @@ class TitleFrame(ttk.Frame):
             l1.configure(text="Where do you want to go?")
         elif frame_status == "office":
             l1.configure(text="Going to: Office")
-        elif frame_status == "restroom":
-            l1.configure(text="Going to: Toilet")
+        elif frame_status == "bathroom":
+            l1.configure(text="Going to: Bathroom")
         elif frame_status == "kitchen":
             l1.configure(text="Going to: Kitchen")
         elif frame_status == "invalid":
@@ -114,17 +114,17 @@ class ButtonFrame(ttk.Frame):
             command=lambda : Functions.pressOffice(container))
         office_button.pack(expand=True, side='left', fill='x', ipady=30, padx=5, pady=5)
 
-        restroom_button = tk.Button(
+        bathroom_button = tk.Button(
             self,
             foreground = '#fff',
-            text = 'TOILET',
+            text = 'BATHROOM',
             font = ('Montserrat', 20, 'bold'),
             image = self.photo,
             compound='center',
             bd = 0,
             activeforeground = '#697B8B',
-            command=lambda : Functions.pressRestroom(container))
-        restroom_button.pack(expand=True, side='left', fill='x', ipady=30, padx=5, pady=5)
+            command=lambda : Functions.pressBathroom(container))
+        bathroom_button.pack(expand=True, side='left', fill='x', ipady=30, padx=5, pady=5)
 
 class HelpFrame (ttk.Frame):
     def __init__(self, container):
@@ -133,7 +133,7 @@ class HelpFrame (ttk.Frame):
         l1 = tk.Label(self, font=('Montserrat', 18),
                       foreground=Style.header, background=Style.background)
         l1.pack(expand=1, fill='y')
-        l1.configure(text="This robot can bring you to the Office, Kitchen or Toilet. \nSpeak slowly and clearly into the microphone: \"Go to the ___\" ")
+        l1.configure(text="This robot can bring you to the Office, Kitchen or Bathroom. \nSpeak slowly and clearly into the microphone: \"Go to the ___\" ")
 
         self.photo = tk.PhotoImage(file = "images/back.png")
         back_button = tk.Button(
@@ -189,8 +189,8 @@ class Functions:
         move_bot.office()
 
     @staticmethod
-    def pressRestroom(container):
-        container.change_frame('restroom')
+    def pressBathroom(container):
+        container.change_frame('bathroom')
         move_bot.restroom()
 
     @staticmethod

@@ -25,4 +25,4 @@ for i in ["start", "office", "bathroom", "kitchen", 'invalid', "stop", "info"]:
 
     # Saving the converted audio in a mp3 file named
     # welcome
-    myobj.save(i + ".mp3")
+    myobj.save( i + ".mp3")

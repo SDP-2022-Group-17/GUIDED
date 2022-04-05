@@ -32,7 +32,7 @@ class UI(tk.Tk):
 
         # initializing title frames to an empty array
         self.title_frames = {}
-        self.frame_statuses = ["start", "office", "restroom", "kitchen", 'invalid']
+        self.frame_statuses = ["start", "office", "bathroom", "kitchen", 'invalid']
         for frame_status in self.frame_statuses:
             title_frame = TitleFrame(self, frame_status)
             self.title_frames[frame_status] = title_frame
@@ -48,7 +48,9 @@ class UI(tk.Tk):
         if stop:
             self.stop_frame.tkraise()
             path = os.path.join(os.getcwd(), 'sounds', "stop.mp3")
-            self.after(100, lambda: os.system("mpg123 -q " + u"{}".format(path)))
+            # self.after(100, lambda: os.system("mpg123 -q " + u"{}".format(path)))
+            self.after(100, lambda: os.system("start " + u"{}".format(path)))
+
             self.after(5000, lambda : self.change_stop_frame(stop=False))
 
         else:
@@ -59,7 +61,9 @@ class UI(tk.Tk):
             self.help_frame.tkraise()
             self.stop_button_frame.tkraise()
             path = os.path.join(os.getcwd(), 'sounds', "info.mp3")
-            self.after(100, lambda: os.system("mpg123 -q " + u"{}".format(path)))
+            # self.after(100, lambda: os.system("mpg123 -q " + u"{}".format(path)))
+            self.after(100, lambda: os.system("start " + u"{}".format(path)))
+
         else:
             self.change_frame('start')
 
@@ -72,7 +76,9 @@ class UI(tk.Tk):
             title_frame.tkraise()
 
             path = os.path.join(os.getcwd(), 'sounds', "{}.mp3".format(frame_status))
-            self.after(100, lambda: os.system("mpg123 -q " + u"{}".format(path)))
+            # self.after(100, lambda: os.system("mpg123 -q " + u"{}".format(path)))
+            self.after(100, lambda: os.system("start" + u"{}".format(path)))
+
 
     def listenAudioInput(self):
         text = self.speech_recognition.listenMicrophone()
@@ -81,7 +87,7 @@ class UI(tk.Tk):
         help_words = ['help', 'information', 'info']
         stop_words = ['stop', 'danger', 'halt']
         office_words = ['office', 'workspace', 'workplace', 'desk']
-        toilet_words = ['toilet', 'restroom', 'bathroom', 'lavatory', 'wc', 'washroom']
+        toilet_words = ['toilet', 'washroom', 'bathroom', 'lavatory', 'wc']
         kitchen_words = ['kitchen']
 
         if text:
@@ -95,8 +101,8 @@ class UI(tk.Tk):
                 Functions.pressOffice(self)
                 print("push office")
             elif any(word in text for word in toilet_words):
-                self.change_frame('restroom')
-                Functions.pressRestroom(self)
+                self.change_frame('bathroom')
+                Functions.pressBathroom(self)
                 print("push bathroom")
             elif any(word in text for word in kitchen_words):
                 self.change_frame('kitchen')
@@ -104,7 +110,7 @@ class UI(tk.Tk):
                 print("push kitchen")
             else:
                 self.change_frame('invalid')
-                
+
         self.after(2000, self.listenAudioInput)
 
 if __name__ == "__main__":
