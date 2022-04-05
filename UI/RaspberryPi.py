@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 This file should run on the Pi
 There are 3 key features that need to be implemented

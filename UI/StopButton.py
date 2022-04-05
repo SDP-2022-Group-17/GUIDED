@@ -12,7 +12,9 @@ class StopButton():
         return StopButton.__instance
 
     def button_callback(self, channel):
+        print("emergency")
         self.move_bot.stop()
+        print("Emergency button pressed") 
         sleep(1)
 
     def __init__(self):

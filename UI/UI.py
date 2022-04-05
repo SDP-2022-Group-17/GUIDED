@@ -14,9 +14,13 @@ class UI(tk.Tk):
         self.logo_frame = LogoFrame(self)
         self.logo_frame.grid(column=0, row=0, sticky='new', columnspan=3)
 
-        # Room buttons
+        # Help page
         self.help_frame = HelpFrame(self)
         self.help_frame.grid(column=1, row=1, rowspan=2, sticky='nsew')
+        
+        # Stop page
+        self.stop_frame = StopFrame(self)
+        self.stop_frame.grid(column=1, row=1, rowspan=2, sticky='nsew')
 
         # Room buttons
         self.button_frame = ButtonFrame(self)
@@ -29,7 +33,7 @@ class UI(tk.Tk):
                     image = self.stop_photo,
                     background = Style.background,
                     bd = 0,
-                    command = Functions.pressStop)
+                    command = lambda: Functions.pressStop(self))
         stopButton.grid(row=3, column=1, sticky='nsew', pady=15)
 
         # initializing title frames to an empty array
@@ -42,9 +46,18 @@ class UI(tk.Tk):
 
         self.change_frame('start')
 
-        # self.speech_recognition = speech.Speech()
-        # self.after(1000, self.listenAudioInput)
+        self.speech_recognition = speech.Speech()
+        self.after(1000, self.listenAudioInput)
 
+
+    def change_stop_frame(self, stop=True):
+        if stop:
+            self.stop_frame.tkraise()
+            self.after(10000, lambda : self.change_stop_frame(stop=False))
+        else:
+            self.change_frame('start')
+            self.button_frame.tkraise()
+            
 
     def change_help_frame(self, help=True):
         if help:
@@ -63,6 +76,7 @@ class UI(tk.Tk):
 
     def listenAudioInput(self):
         text = self.speech_recognition.listenMicrophone()
+        text
 
         help_words = ['help', 'information', 'info']
         stop_words = ['stop', 'danger']
@@ -72,7 +86,7 @@ class UI(tk.Tk):
 
         if text:
             if any(word in text for word in stop_words):
-                Functions.pressStop()
+                Functions.pressStop(self)
                 print("stop")
             elif any(word in text for word in help_words):
                 self.change_help_frame(help=True)
@@ -90,9 +104,9 @@ class UI(tk.Tk):
                 print("push kitchen")
             else:
                 self.change_frame('invalid')
-            self.after(1000000, lambda : self.change_frame('start'))
+            self.after(100000, lambda : self.change_frame('start'))
 
-        self.after(1000, self.listenAudioInput)
+        self.after(3000, self.listenAudioInput)
 
 if __name__ == "__main__":
     ui = UI()

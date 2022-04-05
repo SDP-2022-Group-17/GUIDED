@@ -1,7 +1,7 @@
 from tkinter import ttk
 import tkinter as tk
-# import navigation as nav
-# from StopButton import StopButton
+import navigation as nav
+from StopButton import StopButton
 
 class Style:
     background = '#efefef'
@@ -15,7 +15,7 @@ class Style:
         container.title("Welcome to guidED")
         container.configure(background=self.background)
 
-        # container.attributes("-fullscreen", True)
+        container.attributes("-fullscreen", True)
 
         # Centralise widgets by giving empty columns a weight
         # so that they consume all extra space
@@ -66,14 +66,24 @@ class LogoFrame(ttk.Frame):
         logo.place(relx = 0.5, rely=0, anchor='n')
 
         # Help button
-        # phys_button = StopButton.getInstance()
-        self.photo =  tk.PhotoImage(file = "images/small_help-modified.png")
+        phys_button = StopButton.getInstance()
+        self.help_photo =  tk.PhotoImage(file = "images/small_help-modified.png")
         stopButton = tk.Button(
                     self,
-                    image = self.photo,
+                    image = self.help_photo,
                     background = '#181d21',
                     bd = 0,
                     command = lambda : Functions.pressCall(container))
+        stopButton.pack(side='left', anchor='nw', pady=5)
+        
+        # Close button
+        self.close_photo =  tk.PhotoImage(file = "images/close.png")
+        stopButton = tk.Button(
+                    self,
+                    image = self.close_photo,
+                    background = '#181d21',
+                    bd = 0,
+                    command = container.destroy)
         stopButton.pack(side='right', anchor='ne', pady=5)
 
 class ButtonFrame(ttk.Frame):
@@ -121,10 +131,10 @@ class HelpFrame (ttk.Frame):
     def __init__(self, container):
         super().__init__(container, style='transparent.TFrame')
 
-        l1 = tk.Label(self, font=('Montserrat', 18),
+        l1 = tk.Label(self, font=('Montserrat', 18), 
                       foreground=Style.header, background=Style.background)
         l1.pack(expand=1, fill='y')
-        l1.configure(text="This robot can bring you to the Office, Kitchen or Toilet.")
+        l1.configure(text="This robot can bring you to the Office, Kitchen or Toilet. \nSpeak slowly and clearly into the microphone: \"Go to the ___\" ")
 
         self.photo = tk.PhotoImage(file = "images/back.png")
         back_button = tk.Button(
@@ -138,10 +148,18 @@ class HelpFrame (ttk.Frame):
             activeforeground = '#697B8B',
             command=lambda : container.change_help_frame(help=False))
         back_button.pack()
+        
+ 
+class StopFrame (ttk.Frame):
+    def __init__(self, container):
+        super().__init__(container, style='transparent.TFrame')
+        self.photo = tk.PhotoImage(file = "images/stopsign.png")
+        l1 = tk.Label(image=self.photo)
+        l1.grid(sticky='nsew')
 
 class Functions:
     global move_bot
-    # move_bot = nav.Navigation()
+    move_bot = nav.Navigation()
 
     @staticmethod
     def pressCall(container):
@@ -162,6 +180,6 @@ class Functions:
         move_bot.restroom()
 
     @staticmethod
-    def pressStop():
+    def pressStop(container):
         move_bot.stop()
-        print("Stop button pressed.")
+        container.change_stop_frame()
