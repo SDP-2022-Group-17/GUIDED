@@ -15,7 +15,7 @@ class Speech(sr.Recognizer):
         print('Adjusting for ambient noise.')
         self.microphone = sr.Microphone()
         with self.microphone as source:
-            self.adjust_for_ambient_noise(source, duration = 10)
+            self.adjust_for_ambient_noise(source, duration = 3)
         print('Microphone calibrated.')
     """
     Using a Microphone for audio input
