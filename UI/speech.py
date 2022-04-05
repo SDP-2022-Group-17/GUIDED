@@ -2,7 +2,6 @@ import speech_recognition as sr
 
 class Speech(sr.Recognizer):
     def __init__(self):
-
         super().__init__()
 
         # for index, name in enumerate(sr.Microphone.list_microphone_names()):
@@ -13,10 +12,11 @@ class Speech(sr.Recognizer):
 
         # self.pause_threshold = 100000
 
+        print('Adjusting for ambient noise.')
         self.microphone = sr.Microphone()
         with self.microphone as source:
             self.adjust_for_ambient_noise(source, duration = 10)
-
+        print('Microphone calibrated.')
     """
     Using a Microphone for audio input
     """
@@ -25,7 +25,7 @@ class Speech(sr.Recognizer):
         with self.microphone as source:
             print("Please say something:")
             try:
-                audio = self.listen(source, timeout=1, phrase_time_limit=10)
+                audio = self.listen(source, timeout=1, phrase_time_limit=3)
                 print("LISTENED")
                 text = self.recognize_google(audio)
                 print("You said: " + text)

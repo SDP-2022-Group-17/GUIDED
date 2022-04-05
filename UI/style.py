@@ -15,7 +15,7 @@ class Style:
         container.title("Welcome to guidED")
         container.configure(background=self.background)
 
-        container.attributes("-fullscreen", True)
+        # container.attributes("-fullscreen", True)
 
         # Centralise widgets by giving empty columns a weight
         # so that they consume all extra space
@@ -66,7 +66,6 @@ class LogoFrame(ttk.Frame):
         logo.place(relx = 0.5, rely=0, anchor='n')
 
         # Help button
-        phys_button = StopButton.getInstance()
         self.help_photo =  tk.PhotoImage(file = "images/small_help-modified.png")
         stopButton = tk.Button(
                     self,
@@ -75,7 +74,7 @@ class LogoFrame(ttk.Frame):
                     bd = 0,
                     command = lambda : Functions.pressCall(container))
         stopButton.pack(side='left', anchor='nw', pady=5)
-        
+
         # Close button
         self.close_photo =  tk.PhotoImage(file = "images/close.png")
         stopButton = tk.Button(
@@ -131,7 +130,7 @@ class HelpFrame (ttk.Frame):
     def __init__(self, container):
         super().__init__(container, style='transparent.TFrame')
 
-        l1 = tk.Label(self, font=('Montserrat', 18), 
+        l1 = tk.Label(self, font=('Montserrat', 18),
                       foreground=Style.header, background=Style.background)
         l1.pack(expand=1, fill='y')
         l1.configure(text="This robot can bring you to the Office, Kitchen or Toilet. \nSpeak slowly and clearly into the microphone: \"Go to the ___\" ")
@@ -148,14 +147,29 @@ class HelpFrame (ttk.Frame):
             activeforeground = '#697B8B',
             command=lambda : container.change_help_frame(help=False))
         back_button.pack()
-        
- 
+
 class StopFrame (ttk.Frame):
     def __init__(self, container):
         super().__init__(container, style='transparent.TFrame')
-        self.photo = tk.PhotoImage(file = "images/stopsign.png")
-        l1 = tk.Label(image=self.photo)
-        l1.grid(sticky='nsew')
+
+        self.photo = tk.PhotoImage(file = "images/bigstop.png")
+        stop_photo = tk.Label(self, image = self.photo)
+        stop_photo.pack(expand=True, fill='both')
+
+class StopButtonFrame (ttk.Frame):
+    def __init__(self, container):
+        super().__init__(container, style='transparent.TFrame')
+        # Stop button
+        phys_button = StopButton.getInstance()
+        self.stop_photo = tk.PhotoImage(file = "images/stop.png")
+        stopButton = tk.Button(
+                    self,
+                    image = self.stop_photo,
+                    background = Style.background,
+                    bd = 0,
+                    command = lambda: Functions.pressStop(container))
+        stopButton.pack(pady=15)
+
 
 class Functions:
     global move_bot
@@ -163,7 +177,7 @@ class Functions:
 
     @staticmethod
     def pressCall(container):
-         container.change_help_frame(help=True)
+        container.change_help_frame(True)
 
     def pressKitchen(container):
         container.change_frame('kitchen')
@@ -181,5 +195,5 @@ class Functions:
 
     @staticmethod
     def pressStop(container):
+        container.change_stop_frame(True)
         move_bot.stop()
-        container.change_stop_frame()
